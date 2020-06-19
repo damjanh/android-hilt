@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="home_dest" type="id" />
+    <item name="words_dest" type="id" />
+</resources>

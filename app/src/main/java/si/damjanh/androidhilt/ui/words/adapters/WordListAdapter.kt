@@ -1,4 +1,4 @@
-package si.damjanh.androidhilt.ui.main.adapters
+package si.damjanh.androidhilt.ui.words.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
