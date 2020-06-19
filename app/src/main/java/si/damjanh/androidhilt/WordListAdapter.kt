@@ -28,4 +28,9 @@ class WordListAdapter internal constructor(context: Context) :
     }
 
     override fun getItemCount(): Int = words.size
+
+    fun setWords(words: List<Word>) {
+        this.words = words
+        notifyDataSetChanged()
+    }
 }
