@@ -20,6 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.new_word.NewWordActivity" />
+        <activity android:name=".ui.settings.SettingsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="si.damjanh.androidhilt.ui.main.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

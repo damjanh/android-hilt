@@ -8,6 +8,7 @@
         android:name="si.damjanh.androidhilt.ui.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home">
+
     </fragment>
 
     <fragment
@@ -17,4 +18,12 @@
         tools:layout="@layout/fragment_words">
 
     </fragment>
+
+    <activity
+        android:id="@+id/settings_dest"
+        android:name="si.damjanh.androidhilt.ui.settings.SettingsActivity"
+        android:label="@string/settings"
+        tools:layout="@layout/activity_settings">
+
+    </activity>
 </navigation>

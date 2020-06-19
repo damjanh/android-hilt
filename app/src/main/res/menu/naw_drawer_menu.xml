@@ -10,4 +10,9 @@
             android:icon="@drawable/ic_format_list_bulleted"
             android:title="@string/words" />
     </group>
+
+    <item
+        android:id="@+id/settings_dest"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings" />
 </menu>

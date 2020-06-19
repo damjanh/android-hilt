@@ -2,4 +2,5 @@
 <resources>
     <item name="home_dest" type="id" />
     <item name="words_dest" type="id" />
+    <item name="settings_dest" type="id" />
 </resources>
