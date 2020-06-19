@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 class Word(
     @ColumnInfo(name = "word") val word: String
 ) {
-    @PrimaryKey(autoGenerate = true) val id: Int = 0
+    @PrimaryKey(autoGenerate = true) var id: Int = 0
 }
