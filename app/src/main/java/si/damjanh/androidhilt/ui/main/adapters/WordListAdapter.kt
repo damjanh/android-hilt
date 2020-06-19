@@ -1,4 +1,4 @@
-package si.damjanh.androidhilt
+package si.damjanh.androidhilt.ui.main.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import si.damjanh.androidhilt.R
+import si.damjanh.androidhilt.data.model.Word
 
 class WordListAdapter internal constructor(context: Context) :
     RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {

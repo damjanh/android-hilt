@@ -1,4 +1,4 @@
-package si.damjanh.androidhilt
+package si.damjanh.androidhilt.ui.main
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import si.damjanh.androidhilt.R
+import si.damjanh.androidhilt.data.model.Word
+import si.damjanh.androidhilt.ui.main.adapters.WordListAdapter
+import si.damjanh.androidhilt.ui.new_word.WordViewModel
+import si.damjanh.androidhilt.ui.new_word.NewWordActivity
 
 class MainActivity : AppCompatActivity() {
 

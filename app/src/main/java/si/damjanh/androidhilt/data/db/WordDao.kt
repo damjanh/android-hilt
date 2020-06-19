@@ -1,10 +1,11 @@
-package si.damjanh.androidhilt
+package si.damjanh.androidhilt.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import si.damjanh.androidhilt.data.model.Word
 
 @Dao
 interface WordDao {

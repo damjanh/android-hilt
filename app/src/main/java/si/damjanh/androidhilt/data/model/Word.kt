@@ -1,4 +1,4 @@
-package si.damjanh.androidhilt
+package si.damjanh.androidhilt.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

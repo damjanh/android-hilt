@@ -1,10 +1,11 @@
-package si.damjanh.androidhilt
+package si.damjanh.androidhilt.ui.new_word
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_new_word.*
+import si.damjanh.androidhilt.R
 
 class NewWordActivity : AppCompatActivity() {
 

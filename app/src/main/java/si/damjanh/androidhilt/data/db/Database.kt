@@ -1,4 +1,4 @@
-package si.damjanh.androidhilt
+package si.damjanh.androidhilt.data.db
 
 import android.content.Context
 import androidx.room.Database
@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import si.damjanh.androidhilt.data.model.Word
 
 @Database(entities = [Word::class], version = 1, exportSchema = false)
 public abstract class WordDatabase : RoomDatabase() {
@@ -39,7 +40,8 @@ public abstract class WordDatabase : RoomDatabase() {
         private var INSTANCE: WordDatabase? = null
 
         fun getDatabase(context: Context, scope: CoroutineScope): WordDatabase {
-            val tempInstance = INSTANCE
+            val tempInstance =
+                INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
@@ -48,7 +50,11 @@ public abstract class WordDatabase : RoomDatabase() {
                     context.applicationContext,
                     WordDatabase::class.java,
                     "word_database"
-                ).addCallback(WordDatabaseCallback(scope)).build()
+                ).addCallback(
+                    WordDatabaseCallback(
+                        scope
+                    )
+                ).build()
                 INSTANCE = instante
                 return instante
             }
