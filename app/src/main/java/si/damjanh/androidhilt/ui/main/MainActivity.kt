@@ -1,19 +1,18 @@
 package si.damjanh.androidhilt.ui.main
 
-import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.*
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import si.damjanh.androidhilt.R
-import si.damjanh.androidhilt.ui.settings.SettingsActivity
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
