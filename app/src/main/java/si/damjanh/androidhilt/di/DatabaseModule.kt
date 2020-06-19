@@ -1,0 +1,32 @@
+package si.damjanh.androidhilt.di
+
+import android.content.Context
+import androidx.room.Room
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import si.damjanh.androidhilt.data.db.WordDao
+import si.damjanh.androidhilt.data.db.WordDatabase
+import javax.inject.Singleton
+
+@InstallIn(ApplicationComponent::class)
+@Module
+object DatabaseModule {
+
+    @Provides
+    @Singleton
+    fun provideDatabase(@ApplicationContext appContext: Context): WordDatabase {
+        return Room.databaseBuilder(
+            appContext,
+            WordDatabase::class.java,
+            "word_database"
+        ).build()
+    }
+
+    @Provides
+    fun provideWordDao(database: WordDatabase): WordDao {
+        return database.wordDao()
+    }
+}
