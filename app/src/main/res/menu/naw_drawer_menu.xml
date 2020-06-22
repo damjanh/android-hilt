@@ -9,6 +9,10 @@
             android:id="@id/words_dest"
             android:icon="@drawable/ic_format_list_bulleted"
             android:title="@string/words" />
+        <item
+            android:id="@id/plants_dest"
+            android:icon="@drawable/ic_flower"
+            android:title="@string/plants" />
     </group>
 
     <item

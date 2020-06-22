@@ -19,6 +19,14 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/plants_dest"
+        android:name="si.damjanh.androidhilt.ui.plants.PlantListFragment"
+        android:label="@string/plants"
+        tools:layout="@layout/fragment_plant_list">
+
+    </fragment>
+
     <activity
         android:id="@+id/settings_dest"
         android:name="si.damjanh.androidhilt.ui.settings.SettingsActivity"

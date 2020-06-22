@@ -7,5 +7,6 @@
 
     <string name="home">Home</string>
     <string name="words">Words</string>
+    <string name="plants">Plants</string>
     <string name="settings">Settings</string>
 </resources>

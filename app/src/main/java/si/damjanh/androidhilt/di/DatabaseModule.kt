@@ -8,7 +8,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import si.damjanh.androidhilt.data.db.WordDao
-import si.damjanh.androidhilt.data.db.WordDatabase
+import si.damjanh.androidhilt.data.db.AppDatabase
+import si.damjanh.androidhilt.data.db.PlantDao
 import javax.inject.Singleton
 
 @InstallIn(ApplicationComponent::class)
@@ -17,16 +18,21 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext appContext: Context): WordDatabase {
+    fun provideDatabase(@ApplicationContext appContext: Context): AppDatabase {
         return Room.databaseBuilder(
             appContext,
-            WordDatabase::class.java,
+            AppDatabase::class.java,
             "word_database"
         ).build()
     }
 
     @Provides
-    fun provideWordDao(database: WordDatabase): WordDao {
+    fun provideWordDao(database: AppDatabase): WordDao {
         return database.wordDao()
+    }
+
+    @Provides
+    fun providePlantDao(database: AppDatabase): PlantDao {
+        return database.plantDao()
     }
 }
