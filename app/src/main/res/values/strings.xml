@@ -17,6 +17,8 @@
     <string name="blur_lv_3">Level 3</string>
 
     <string name="button_text_cancel_work">Cancel Work</string>
-    <string name="button_text_see_file">See file</string>
+    <string name="button_text_see_file">See File</string>
     <string name="button_text_go">GO</string>
+    <string name="button_text_select_image">Select Image</string>
+    <string name="set_permissions_in_settings">Enable permission in app settings.</string>
 </resources>

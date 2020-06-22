@@ -11,6 +11,12 @@
         android:layout_margin="8dp"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/button_select_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_text_select_image" />
+
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
