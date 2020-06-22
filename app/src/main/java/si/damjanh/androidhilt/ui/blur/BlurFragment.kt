@@ -15,10 +15,14 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.work.WorkInfo
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_blur.*
+import si.damjanh.androidhilt.KEY_IMAGE_URI
 import si.damjanh.androidhilt.R
-import java.util.*
 
 @AndroidEntryPoint
 class BlurFragment : Fragment() {
@@ -33,7 +37,18 @@ class BlurFragment : Fragment() {
         Manifest.permission.WRITE_EXTERNAL_STORAGE
     )
 
+    private val blurLevel: Int
+        get() =
+            when (radio_blur_group.checkedRadioButtonId) {
+                R.id.radio_blur_lv_1 -> 1
+                R.id.radio_blur_lv_2 -> 2
+                R.id.radio_blur_lv_3 -> 3
+                else -> 1
+            }
+
     private var permissionRequestCount: Int = 0
+
+    private val blurViewModel: BlurViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +60,12 @@ class BlurFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val imageUriExtra = activity?.intent?.getStringExtra(KEY_IMAGE_URI)
+        blurViewModel.setImageUri(imageUriExtra)
+        blurViewModel.imageUri?.let { imageUri ->
+            Glide.with(this).load(imageUri).into(image_view)
+        }
 
         savedInstanceState?.let {
             permissionRequestCount = it.getInt(KEY_PERMISSIONS_REQUEST_COUNT, 0)
@@ -61,6 +82,23 @@ class BlurFragment : Fragment() {
             )
             startActivityForResult(chooseIntent, REQUEST_CODE_IMAGE)
         }
+
+        go_button.setOnClickListener { blurViewModel.applyBlur(blurLevel) }
+
+        see_file_button.setOnClickListener {
+            blurViewModel.outputUri?.let { currentUri ->
+                val actionView = Intent(Intent.ACTION_VIEW, currentUri)
+                actionView.resolveActivity(requireActivity().packageManager)?.run {
+                    startActivity(actionView)
+                }
+            }
+        }
+
+        cancel_button.setOnClickListener {
+            blurViewModel.cancelWork()
+        }
+
+        blurViewModel.outputWorkInfos.observe(requireActivity(), workInfosObserver())
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -120,7 +158,7 @@ class BlurFragment : Fragment() {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CODE_IMAGE -> data?.let { handleImageRequestResult(data) }
-                else -> Log.d("BlurFragment","Unknown request code.")
+                else -> Log.d("BlurFragment", "Unknown request code.")
             }
         } else {
             Log.e("BlurFragment", String.format("Unexpected Result code %s", resultCode))
@@ -134,10 +172,41 @@ class BlurFragment : Fragment() {
             Log.e("BlurFragment", "Invalid input image Uri.")
             return
         }
-
+        blurViewModel.setImageUri(imageUri.toString())
         image_view.setImageURI(imageUri)
 
-       // TODO: Show selected image and enable blur controls.
+    }
 
+    private fun workInfosObserver(): Observer<List<WorkInfo>> {
+        return Observer { listOfWorkInfo ->
+            if (listOfWorkInfo.isNullOrEmpty()) {
+                return@Observer
+            }
+            val workInfo = listOfWorkInfo[0]
+            if (workInfo.state.isFinished) {
+                showWorkFinished()
+                val outputImageUri = workInfo.outputData.getString(KEY_IMAGE_URI)
+                if (!outputImageUri.isNullOrEmpty()) {
+                    blurViewModel.setOutputUri(outputImageUri as String)
+                    see_file_button.visibility = View.VISIBLE
+                }
+            } else {
+                showWorkInProgress()
+            }
+        }
+    }
+
+
+    private fun showWorkInProgress() {
+        progress_bar.visibility = View.VISIBLE
+        cancel_button.visibility = View.VISIBLE
+        go_button.visibility = View.GONE
+        see_file_button.visibility = View.GONE
+    }
+
+    private fun showWorkFinished() {
+        progress_bar.visibility = View.GONE
+        cancel_button.visibility = View.GONE
+        go_button.visibility = View.VISIBLE
     }
 }
