@@ -25,13 +25,10 @@ class PlantRepository @Inject constructor(
         val plants = plantDao.getPlants()
         val customSortOrder = plantsListSortOrderCache.getOrAwait()
         emitSource(plants.map { plantList -> plantList.applySort(customSortOrder) })
-
     }
 
     override fun getPlantsWithGrowZone(growZone: GrowZone) =
         plantDao.getPlantsWithGrowZoneNumber(growZone.number)
-
-
 
     private fun List<Plant>.applySort(customSortOrder: List<String>): List<Plant> {
         return sortedBy { plant ->

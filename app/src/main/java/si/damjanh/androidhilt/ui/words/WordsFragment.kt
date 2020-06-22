@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_words.*
 import si.damjanh.androidhilt.R
 import si.damjanh.androidhilt.data.model.Word
 import si.damjanh.androidhilt.ui.words.adapters.WordListAdapter
-import si.damjanh.androidhilt.ui.WordViewModel
 import si.damjanh.androidhilt.ui.new_word.NewWordActivity
 
 @AndroidEntryPoint

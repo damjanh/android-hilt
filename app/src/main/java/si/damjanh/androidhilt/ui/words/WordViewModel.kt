@@ -1,4 +1,4 @@
-package si.damjanh.androidhilt.ui
+package si.damjanh.androidhilt.ui.words
 
 import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
