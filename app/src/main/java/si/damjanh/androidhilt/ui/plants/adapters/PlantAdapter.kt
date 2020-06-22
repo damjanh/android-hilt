@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import si.damjanh.androidhilt.R
 import si.damjanh.androidhilt.data.model.Plant
 
@@ -24,8 +26,13 @@ class PlantAdapter internal constructor(context: Context) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val current = getItem(position)
-        (holder as PlantViewHolder).plantTitle.text = current.name
-        // TODO: Set plant image
+        (holder as PlantViewHolder).apply {
+            plantTitle.text = current.name
+            Glide.with(plantImage.context)
+                .load(current.imageUrl)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(plantImage)
+        }
     }
 
     inner class PlantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
