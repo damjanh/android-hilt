@@ -4,4 +4,5 @@
     <item name="words_dest" type="id" />
     <item name="plants_dest" type="id" />
     <item name="settings_dest" type="id" />
+    <item name="blur_dest" type="id" />
 </resources>

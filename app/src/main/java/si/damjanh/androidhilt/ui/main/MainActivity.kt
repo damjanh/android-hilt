@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.home_dest, R.id.words_dest, R.id.plants_dest),
+            setOf(R.id.home_dest, R.id.words_dest, R.id.plants_dest, R.id.blur_dest),
             drawerLayout
         )
 

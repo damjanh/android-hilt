@@ -13,6 +13,10 @@
             android:id="@id/plants_dest"
             android:icon="@drawable/ic_flower"
             android:title="@string/plants" />
+        <item
+            android:id="@id/blur_dest"
+            android:icon="@drawable/ic_broken_image"
+            android:title="@string/blur" />
     </group>
 
     <item

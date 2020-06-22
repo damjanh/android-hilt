@@ -9,4 +9,14 @@
     <string name="words">Words</string>
     <string name="plants">Plants</string>
     <string name="settings">Settings</string>
+    <string name="blur">Blur</string>
+
+
+    <string name="blur_lv_1">Level 1</string>
+    <string name="blur_lv_2">Level 2</string>
+    <string name="blur_lv_3">Level 3</string>
+
+    <string name="button_text_cancel_work">Cancel Work</string>
+    <string name="button_text_see_file">See file</string>
+    <string name="button_text_go">GO</string>
 </resources>

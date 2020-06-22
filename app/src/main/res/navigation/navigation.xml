@@ -27,6 +27,14 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/blur_dest"
+        android:name="si.damjanh.androidhilt.ui.blur.BlurFragment"
+        android:label="@string/blur"
+        tools:layout="@layout/fragment_blur">
+
+    </fragment>
+
     <activity
         android:id="@+id/settings_dest"
         android:name="si.damjanh.androidhilt.ui.settings.SettingsActivity"
